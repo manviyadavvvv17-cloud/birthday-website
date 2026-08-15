@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎂 Birthday Surprise</title>
+
+<style>
+
+/* =====================================================
+   BASIC SETUP
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 50% 10%, #38206d 0%, transparent 40%),
+        linear-gradient(135deg, #07001c, #17052f, #08001c);
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 10px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .2;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    animation: floatHeart linear forwards;
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   WELCOME SCREEN
+===================================================== */
+
+#welcomeScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle, #34145f, #080014 70%);
+}
+
+.welcomeBox {
+    width: min(90%, 500px);
+    text-align: center;
+    padding: 45px 30px;
+
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 30px;
+
+    background: rgba(20,5,45,.75);
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 0 50px rgba(255, 60, 180, .3);
+}
+
+.welcomeBox h1 {
+    font-size: clamp(3rem, 10vw, 5rem);
+
+    color: #ff8ad8;
+
+    text-shadow:
+        0 0 10px #ff4fbd,
+        0 0 30px #ff4fbd;
+}
+
+.welcomeBox p {
+    margin: 20px 0;
+    color: #ddd;
+}
+
+.nameInput {
+    width: 100%;
+    padding: 17px 20px;
+
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,.3);
+
+    outline: none;
+
+    color: white;
+    background: rgba(255,255,255,.08);
+
+    font-size: 18px;
+    text-align: center;
+}
+
+.startButton {
+    margin-top: 20px;
+
+    width: 100%;
+    padding: 17px;
+
+    border: none;
+    border-radius: 50px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: white;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(90deg, #ff3cac, #784ba0, #2b86c5);
+
+    box-shadow: 0 10px 30px rgba(255,50,180,.3);
+
+    transition: .3s;
+}
+
+.startButton:hover {
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   MAIN PAGE
+===================================================== */
+
+#mainPage {
+    display: none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    text-align: center;
+    padding: 50px 20px 25px;
+}
+
+.header h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+
+    font-family: Georgia, serif;
+
+    color: #ffd477;
+
+    text-shadow:
+        0 0 10px #ffb52e,
+        0 0 25px #ff7b00,
+        0 0 50px #ff3d8d;
+
+    animation: titlePulse 2s infinite alternate;
+}
+
+@keyframes titlePulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.03);
+    }
+}
+
+.header h2 {
+    margin-top: 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(1.5rem, 5vw, 3rem);
+
+    color: #ff85d4;
+}
+
+.header .stars {
+    color: #ffd45c;
+    letter-spacing: 8px;
+}
+
+
+/* =====================================================
+   MAIN GRID
+===================================================== */
+
+.mainGrid {
+    width: min(1400px, 95%);
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        2fr
+        1fr;
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   GLASS CARDS
+===================================================== */
+
+.card {
+    padding: 25px;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.07);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.3);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+
+    color: #ff8edc;
+
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cakeArea {
+    min-height: 550px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.cake {
+    position: relative;
+
+    width: 330px;
+    height: 300px;
+
+    transform:
+        perspective(800px)
+        rotateX(5deg);
+
+    filter:
+        drop-shadow(0 30px 25px rgba(0,0,0,.5));
+}
+
+
+/* cake bottom */
+
+.cakeBottom {
+    position: absolute;
+
+    left: 15px;
+    bottom: 20px;
+
+    width: 300px;
+    height: 130px;
+
+    border-radius: 20px 20px 35px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #48170e,
+            #8b351e,
+            #5a1e12
+        );
+
+    box-shadow:
+        inset 0 10px 20px rgba(255,255,255,.1);
+}
+
+
+/* cake top */
+
+.cakeTop {
+    position: absolute;
+
+    left: 15px;
+    top: 105px;
+
+    width: 300px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #b85a35,
+            #682313
+        );
+
+    z-index: 2;
+}
+
+
+/* chocolate */
+
+.chocolate {
+    position: absolute;
+
+    left: 25px;
+    top: 130px;
+
+    width: 280px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #35100b;
+
+    z-index: 4;
+}
+
+
+/* icing */
+
+.icing {
+    position: absolute;
+
+    left: 20px;
+    top: 150px;
+
+    width: 290px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #9c4a28;
+
+    z-index: 3;
+}
+
+
+/* sprinkles */
+
+.sprinkles {
+    position: absolute;
+
+    left: 40px;
+    bottom: 55px;
+
+    width: 250px;
+    height: 30px;
+
+    z-index: 8;
+
+    background:
+        radial-gradient(circle, #ffdf40 3px, transparent 4px),
+        radial-gradient(circle, #ff4fa3 3px, transparent 4px),
+        radial-gradient(circle, #3de6ff 3px, transparent 4px);
+
+    background-size:
+        35px 20px,
+        28px 18px,
+        40px 25px;
+}
+
+
+/* =====================================================
+   CANDLES
+===================================================== */
+
+.candles {
+    position: absolute;
+
+    top: 40px;
+    left: 45px;
+
+    width: 240px;
+
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 20;
+}
+
+.candle {
+    width: 22px;
+    height: 75px;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            white 0 8px,
+            #ff4f81 8px 16px
+        );
+
+    position: relative;
+}
+
+
+/* flame */
+
+.flame {
+    position: absolute;
+
+    width: 20px;
+    height: 32px;
+
+    left: 1px;
+    top: -32px;
+
+    border-radius:
+        50% 50% 50% 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            white 0 15%,
+            #fff000 25%,
+            #ff9d00 55%,
+            #ff3b00 90%
+        );
+
+    box-shadow:
+        0 0 15px #ff9900,
+        0 0 30px #ff6600;
+
+    animation:
+        flameMove .35s infinite alternate;
+}
+
+@keyframes flameMove {
+
+    from {
+        transform: rotate(-5deg) scale(1);
+    }
+
+    to {
+        transform: rotate(5deg) scale(1.15);
+    }
+}
+
+
+/* smoke */
+
+.smoke {
+    display: none;
+
+    position: absolute;
+
+    top: -60px;
+    left: 4px;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: rgba(220,220,220,.5);
+}
+
+.smoke.show {
+    display: block;
+
+    animation:
+        smokeUp 2s forwards;
+}
+
+@keyframes smokeUp {
+
+    from {
+        transform: translateY(0) scale(1);
+        opacity: .7;
+    }
+
+    to {
+        transform:
+            translateY(-100px)
+            scale(4);
+
+        opacity: 0;
+    }
+}
+
+.candle.blown .flame {
+    display: none;
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 15px 20px;
+
+    border: none;
+    border-radius: 50px;
+
+    color: white;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3cac,
+            #784ba0
+        );
+
+    box-shadow:
+        0 5px 20px rgba(255,50,180,.25);
+
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   GIFT
+===================================================== */
+
+.giftArea {
+    text-align: center;
+}
+
+.gift {
+    width: 180px;
+    height: 140px;
+
+    position: relative;
+
+    margin: 40px auto;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    transition: .8s;
+}
+
+.giftBox {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 180px;
+    height: 120px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff247f,
+            #8e2de2
+        );
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 30px rgba(0,0,0,.4);
+}
+
+.giftLid {
+    position: absolute;
+
+    width: 200px;
+    height: 35px;
+
+    left: -10px;
+    top: -20px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5da2,
+            #9b35e8
+        );
+
+    transition: .8s;
+
+    z-index: 5;
+}
+
+.ribbonVertical {
+    position: absolute;
+
+    width: 25px;
+    height: 140px;
+
+    left: 78px;
+
+    background: #ffd34d;
+
+    z-index: 3;
+}
+
+.ribbonHorizontal {
+    position: absolute;
+
+    width: 180px;
+    height: 25px;
+
+    top: 45px;
+
+    background: #ffd34d;
+
+    z-index: 3;
+}
+
+.gift.open .giftLid {
+    transform:
+        translateY(-100px)
+        rotate(-10deg);
+}
+
+
+/* =====================================================
+   PHOTO SLIDESHOW
+===================================================== */
+
+.photoFrame {
+    position: relative;
+
+    width: 100%;
+    height: 300px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.5);
+}
+
+.photoFrame img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: opacity .6s;
+}
+
+.photoButtons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.messageSection {
+    width: min(1000px, 92%);
+
+    margin: 40px auto;
+
+    text-align: center;
+}
+
+.messageSection h2 {
+    font-family: Georgia, serif;
+
+    color: #ff8edc;
+
+    font-size: clamp(2rem, 6vw, 4rem);
+}
+
+#typedMessage {
+    margin-top: 25px;
+
+    min-height: 150px;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.07);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    color: #ffe8f7;
+}
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+.musicPlayer {
+    width: min(700px, 90%);
+
+    margin: 30px auto;
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.08);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.musicIcon {
+    font-size: 40px;
+}
+
+.musicInfo {
+    flex: 1;
+    text-align: left;
+}
+
+.musicInfo strong {
+    display: block;
+
+    color: #ff8bd7;
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   FIREWORKS
+===================================================== */
+
+#fireworks {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    text-align: center;
+
+    padding: 40px;
+
+    color: #aaa;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width: 900px) {
+
+    .mainGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .cakeArea {
+        min-height: 450px;
+    }
+
+    .musicPlayer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .musicInfo {
+        text-align: center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     STARS
+===================================================== -->
+
+<div id="stars"></div>
+
+<canvas id="fireworks"></canvas>
+
+
+<!-- =====================================================
+     WELCOME SCREEN
+===================================================== -->
+
+<section id="welcomeScreen">
+
+    <div class="welcomeBox">
+
+        <h1>Welcome 💖</h1>
+
+        <p>
+            Enter a name to begin a magical birthday surprise 🎁
+        </p>
+
+        <input
+            id="nameInput"
+            class="nameInput"
+            type="text"
+            placeholder="Enter birthday person's name..."
+        >
+
+        <button
+            class="startButton"
+            onclick="startBirthday()"
+        >
+            Let's Begin ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN PAGE
+===================================================== -->
+
+<main id="mainPage">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>Happy Birthday</h1>
+
+    <h2>
+        Dear <span id="personName">Guest</span>!
+    </h2>
+
+    <div class="stars">
+        ★ ★ ★ ★ ★
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN GRID
+===================================================== -->
+
+<section class="mainGrid">
+
+
+    <!-- LEFT -->
+
+    <div class="card">
+
+        <h3>🎂 Make a Wish</h3>
+
+        <p>
+            Close your eyes, make a wish,
+            and blow out the candles!
+        </p>
+
+        <div class="controls">
+
+            <button
+                class="btn"
+                onclick="blowCandles()"
+            >
+                💨 Blow the Candles
+            </button>
+
+            <button
+                class="btn"
+                onclick="playMusic()"
+            >
+                🎵 Play Birthday Song
+            </button>
+
+            <button
+                class="btn"
+                onclick="startFireworks()"
+            >
+                🎆 Fireworks!
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CAKE -->
+
+    <div class="card cakeArea">
+
+        <div class="cake">
+
+            <div class="candles">
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="smoke"></div>
+                </div>
+
+            </div>
+
+
+            <div class="cakeTop"></div>
+
+            <div class="chocolate"></div>
+
+            <div class="icing"></div>
+
+            <div class="cakeBottom"></div>
+
+            <div class="sprinkles"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RIGHT -->
+
+    <div class="card giftArea">
+
+        <h3>🎁 Your Gift</h3>
+
+        <p>
+            Click the gift to open your special surprise!
+        </p>
+
+
+        <div
+            id="gift"
+            class="gift"
+            onclick="openGift()"
+        >
+
+            <div class="giftLid"></div>
+
+            <div class="giftBox"></div>
+
+            <div class="ribbonVertical"></div>
+
+            <div class="ribbonHorizontal"></div>
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="openGift()"
+        >
+            🎁 Open Gift
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PHOTO SLIDESHOW
+===================================================== -->
+
+<section
+    class="card"
+    style="width:min(1000px,92%);margin:30px auto;"
+>
+
+    <h3 style="text-align:center;">
+        📸 Beautiful Memories
+    </h3>
+
+
+    <div class="photoFrame">
+
+        <img
+            id="slideshow"
+            src="photos/photo1.jpg"
+            alt="Birthday memory"
+        >
+
+    </div>
+
+
+    <div class="photoButtons">
+
+        <button
+            class="btn"
+            onclick="previousPhoto()"
+        >
+            ◀ Previous
+        </button>
+
+        <button
+            class="btn"
+            onclick="nextPhoto()"
+        >
+            Next ▶
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BIRTHDAY MESSAGE
+===================================================== -->
+
+<section class="messageSection">
+
+    <h2>
+        💖 A Special Message For You
+    </h2>
+
+    <div id="typedMessage"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<div class="musicPlayer">
+
+    <div class="musicIcon">
+        🎵
+    </div>
+
+    <div class="musicInfo">
+
+        <strong>
+            Birthday Song
+        </strong>
+
+        <span>
+            A special song for this special day ❤️
+        </span>
+
+    </div>
+
+    <button
+        class="btn"
+        onclick="playMusic()"
+    >
+        ▶ Play
+    </button>
+
+    <button
+        class="btn"
+        onclick="pauseMusic()"
+    >
+        ⏸ Pause
+    </button>
+
+</div>
+
+
+<footer>
+    Made with ❤️ for a very special birthday 🎂✨
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     AUDIO
+===================================================== -->
+
+<audio
+    id="birthdayMusic"
+    src="music/birthday.mp3"
+    loop
+></audio>
+
+
+
+<script>
+
+/* =====================================================
+   CREATE STARS
+===================================================== */
+
+const starsContainer =
+    document.getElementById("stars");
+
+for(let i = 0; i < 120; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    starsContainer.appendChild(star);
+}
+
+
+
+/* =====================================================
+   START BIRTHDAY
+===================================================== */
+
+function startBirthday(){
+
+    const input =
+        document.getElementById("nameInput");
+
+  
