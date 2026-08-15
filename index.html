@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎂 Happy Birthday Yash! 🎉</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ff9ecf55, transparent 30%),
+        radial-gradient(circle at 80% 20%, #9b8cff55, transparent 30%),
+        radial-gradient(circle at 50% 90%, #ffcf7055, transparent 35%),
+        linear-gradient(135deg, #16002e, #25005c, #080b35);
+}
+
+/* =====================================
+   NAME SCREEN
+===================================== */
+
+#nameScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        radial-gradient(circle at 50% 40%, #ff4fa366, transparent 35%),
+        linear-gradient(135deg, #120025, #35006d, #080b35);
+
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#nameScreen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.nameCard {
+    width: min(92vw, 520px);
+    padding: 42px 28px;
+
+    text-align: center;
+
+    border: 1px solid #ffffff30;
+    border-radius: 30px;
+
+    background: #ffffff12;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 80px #00000080,
+        inset 0 1px #ffffff30;
+
+    animation: cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.nameCard .emoji {
+    font-size: 65px;
+    animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(3deg);
+    }
+}
+
+.nameCard h1 {
+    margin: 18px 0 10px;
+
+    font-size: clamp(28px, 7vw, 48px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffd1ec,
+            #ffe18a,
+            #fff
+        );
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nameCard p {
+    color: #eee;
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#nameInput {
+    width: 100%;
+
+    padding: 17px 20px;
+
+    border: 1px solid #ffffff40;
+    border-radius: 50px;
+
+    outline: none;
+
+    background: #ffffff18;
+
+    color: white;
+
+    font-size: 17px;
+
+    text-align: center;
+}
+
+#nameInput::placeholder {
+    color: #ffffff99;
+}
+
+.startBtn {
+    margin-top: 18px;
+
+    padding: 15px 32px;
+
+    border: 0;
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    color: #3b005c;
+
+    font-weight: bold;
+    font-size: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe38a,
+            #ff8fc7
+        );
+
+    box-shadow:
+        0 10px 30px #ff7dbb55;
+
+    transition: .3s;
+}
+
+.startBtn:hover {
+    transform: scale(1.06);
+}
+
+
+/* =====================================
+   MAIN PAGE
+===================================== */
+
+#mainPage {
+    display: none;
+
+    position: relative;
+
+    min-height: 100vh;
+}
+
+#mainPage.show {
+    display: block;
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px 50px;
+
+    position: relative;
+}
+
+.smallTitle {
+    color: #ffd9f0;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 10vw, 85px);
+
+    line-height: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffd0ec,
+            #ffe08c,
+            #ff9ed1,
+            #fff
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    animation:
+        rainbowText 5s linear infinite;
+}
+
+@keyframes rainbowText {
+    to {
+        background-position: 300%;
+    }
+}
+
+.hero h2 {
+    margin-top: 18px;
+
+    font-size: clamp(20px, 5vw, 34px);
+
+    color: #fff;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 20px auto;
+
+    color: #ddd;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   CAKE
+===================================== */
+
+.cakeArea {
+    margin-top: 45px;
+
+    position: relative;
+
+    width: 320px;
+    height: 330px;
+
+    perspective: 900px;
+}
+
+.cake {
+    position: absolute;
+
+    left: 50%;
+    bottom: 20px;
+
+    width: 260px;
+    height: 160px;
+
+    transform:
+        translateX(-50%)
+        rotateX(7deg);
+
+    transform-style: preserve-3d;
+}
+
+.cakeBottom {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 260px;
+    height: 100px;
+
+    border-radius:
+        18px
+        18px
+        35px
+        35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b1e65,
+            #ff6ba8,
+            #8b1e65
+        );
+
+    box-shadow:
+        0 20px 25px #00000055,
+        inset 0 10px #ffffff30;
+}
+
+.cakeMiddle {
+    position: absolute;
+
+    bottom: 70px;
+    left: 15px;
+
+    width: 230px;
+    height: 70px;
+
+    border-radius:
+        18px
+        18px
+        25px
+        25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffb0d0,
+            #fff0f8,
+            #ff8fbd
+        );
+
+    box-shadow:
+        inset 0 -10px #ff4f9b55;
+}
+
+.frosting {
+    position: absolute;
+
+    bottom: 118px;
+    left: 5px;
+
+    width: 250px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #ffd9ee
+        );
+
+    box-shadow:
+        0 10px 15px #00000030;
+}
+
+.drip {
+    position: absolute;
+
+    bottom: 105px;
+
+    width: 28px;
+    height: 45px;
+
+    border-radius:
+        0
+        0
+        20px
+        20px;
+
+    background: #fff;
+}
+
+.drip:nth-child(1) {
+    left: 35px;
+    height: 35px;
+}
+
+.drip:nth-child(2) {
+    left: 80px;
+    height: 50px;
+}
+
+.drip:nth-child(3) {
+    left: 130px;
+    height: 32px;
+}
+
+.drip:nth-child(4) {
+    left: 175px;
+    height: 48px;
+}
+
+.candle {
+    position: absolute;
+
+    bottom: 160px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 20px;
+    height: 75px;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #fff,
+            #fff 7px,
+            #ff62aa 7px,
+            #ff62aa 14px
+        );
+
+    box-shadow:
+        0 5px 15px #0004;
+
+    z-index: 5;
+}
+
+.wick {
+    position: absolute;
+
+    width: 3px;
+    height: 15px;
+
+    background: #222;
+
+    top: -14px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.flame {
+    position: absolute;
+
+    width: 25px;
+    height: 38px;
+
+    left: 50%;
+    top: -49px;
+
+    transform: translateX(-50%);
+
+    border-radius:
+        50%
+        50%
+        45%
+        45%;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #fff 0 18%,
+            #ffe45b 25%,
+            #ff9c2a 55%,
+            #ff3d75 100%
+        );
+
+    box-shadow:
+        0 0 15px #ffd42a,
+        0 0 35px #ff7c2a,
+        0 0 60px #ff4777;
+
+    animation:
+        flame .12s infinite alternate;
+
+    transform-origin: bottom center;
+}
+
+@keyframes flame {
+    from {
+        transform:
+            translateX(-50%)
+            rotate(-4deg)
+            scaleY(1);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            rotate(5deg)
+            scaleY(1.12);
+    }
+}
+
+.flame.off {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    transition: .4s;
+}
+
+.smoke {
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    left: 50%;
+    top: -55px;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    background: #ffffff99;
+
+    transform: translateX(-50%);
+}
+
+.smoke.active {
+    animation:
+        smoke 2.5s ease-out forwards;
+}
+
+@keyframes smoke {
+
+    0% {
+        opacity: .7;
+
+        transform:
+            translate(-50%, 0)
+            scale(.5);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-20px, -100px)
+            scale(4);
+    }
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.controlBox {
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.actionBtn {
+    border:
+        1px solid #ffffff35;
+
+    border-radius: 50px;
+
+    padding: 13px 20px;
+
+    background: #ffffff15;
+
+    color: white;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.actionBtn:hover {
+    background: #ffffff28;
+
+    transform:
+        translateY(-3px);
+}
+
+#blowStatus {
+    margin-top: 12px;
+
+    color: #ffd7ee;
+
+    font-size: 14px;
+}
+
+
+/* =====================================
+   MESSAGE
+===================================== */
+
+.messageSection {
+    padding: 80px 20px;
+
+    text-align: center;
+}
+
+.glassCard {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 40px 25px;
+
+    border-radius: 30px;
+
+    background: #ffffff0d;
+
+    border:
+        1px solid #ffffff25;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px #00000045;
+}
+
+.sectionTitle {
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            52px
+        );
+
+    margin-bottom: 25px;
+}
+
+#typedMessage {
+    min-height: 150px;
+
+    color: #ffeaf5;
+
+    font-size:
+        clamp(
+            18px,
+            4vw,
+            25px
+        );
+
+    line-height: 1.8;
+
+    text-align: left;
+
+    white-space: pre-line;
+}
+
+.cursor {
+    display: inline-block;
+
+    width: 3px;
+    height: 25px;
+
+    background: #ff9ecf;
+
+    animation:
+        blink .7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* =====================================
+   GIFT
+===================================== */
+
+.giftSection {
+    padding: 80px 20px;
+
+    text-align: center;
+}
+
+.giftBox {
+    width: 180px;
+    height: 150px;
+
+    position: relative;
+
+    margin: 70px auto 30px;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    transition: 1s;
+}
+
+.giftBase {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 180px;
+    height: 110px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff427d,
+            #9f2fff
+        );
+
+    box-shadow:
+        0 25px 40px #0006;
+}
+
+.giftRibbonVertical {
+    position: absolute;
+
+    width: 28px;
+    height: 110px;
+
+    left: 76px;
+    bottom: 0;
+
+    background: #ffd95c;
+}
+
+.giftLid {
+    position: absolute;
+
+    width: 200px;
+    height: 40px;
+
+    left: -10px;
+    top: 5px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5d92,
+            #ad3cff
+        );
+
+    z-index: 3;
+
+    transform-origin: left bottom;
+
+    transition: 1s;
+}
+
+.giftBow {
+    position: absolute;
+
+    top: -30px;
+    left: 68px;
+
+    width: 45px;
+    height: 45px;
+
+    z-index: 5;
+}
+
+.giftBow::before,
+.giftBow::after {
+    content: "";
+
+    position: absolute;
+
+    width: 45px;
+    height: 30px;
+
+    border:
+        12px solid #ffd95c;
+
+    border-radius: 50%;
+}
+
+.giftBow::before {
+    left: -30px;
+
+    transform:
+        rotate(25deg);
+}
+
+.giftBow::after {
+    right: -30px;
+
+    transform:
+        rotate(-25deg);
+}
+
+.giftBox.open .giftLid {
+    transform:
+        rotate(-35deg)
+        translateY(-60px);
+}
+
+.giftBox.open {
+    transform:
+        translateY(10px);
+}
+
+.giftMessage {
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition: .8s;
+
+    font-size: 22px;
+
+    color: #ffe78e;
+
+    line-height: 1.6;
+}
+
+.giftMessage.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================
+   PHOTOS
+===================================== */
+
+.photoSection {
+    padding: 80px 20px;
+
+    text-align: center;
+}
+
+.slideshow {
+    width:
+        min(
+            90vw,
+            700px
+        );
+
+    height:
+        min(
+            70vw,
+            450px
+        );
+
+    margin: 35px auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    border:
+        3px solid #ffffff25;
+
+    box-shadow:
+        0 25px 70px #00000070;
+
+    background: #ffffff10;
+}
+
+.slide {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+
+    transform:
+        scale(1.08);
+
+    transition:
+        opacity 1s ease,
+        transform 5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+/* =====================================
+   FIREWORKS
+===================================== */
+
+#fireworks {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 500;
+}
+
+.firework {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px #ff8cc8;
+
+    animation:
+        explode 1.3s ease-out forwards;
+}
+
+@keyframes explode {
+
+    0% {
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(var(--x) * 1px),
+                calc(var(--y) * 1px)
+            )
+            scale(.2);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================
+   HEARTS
+===================================== */
+
+.heart {
+    position: fixed;
+
+    bottom: -30px;
+
+    pointer-events: none;
+
+    z-index: 400;
+
+    animation:
+        heartUp linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 8px #ff6baf
+        );
+}
+
+@keyframes heartUp {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            translateX(var(--drift))
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: #ffffff99;
+}
+
+footer .bigHeart {
+    font-size: 45px;
+
+    animation:
+        heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.2);
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+
+    .cakeArea {
+        transform: scale(.85);
+
+        margin-top: 15px;
+    }
+
+    .glassCard {
+        padding: 30px 18px;
+    }
+
+    .hero {
+        padding-top: 60px;
+    }
+
+    #typedMessage {
+        font-size: 17px;
+        line-height: 1.7;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAME SCREEN
+===================================== -->
+
+<section id="nameScreen">
+
+    <div class="nameCard">
+
+        <div class="emoji">
+            🎁
+        </div>
+
+        <h1>
+            A Surprise For Yash 💖
+        </h1>
+
+        <p>
+            Someone has prepared a very special
+            birthday surprise for you...
+            <br>
+            Happy Birthday, Yash! 🎂✨
+        </p>
+
+        <input
+            id="nameInput"
+            type="text"
+            maxlength="30"
+            value="Yash"
+            placeholder="Enter Your Name 🎂"
+        >
+
+        <br>
+
+        <button
+            class="startBtn"
+            onclick="startExperience()"
+        >
+            ✨ Enter The Surprise ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     MAIN WEBSITE
+===================================== -->
+
+<main id="mainPage">
+
+
+<!-- MUSIC -->
+
+<audio
+    id="birthdayMusic"
+    loop
+    preload="auto"
+>
+    <source
+        src="music/birthday.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+    <div class="smallTitle">
+        A magical birthday surprise
+    </div>
+
+    <h1>
+        Happy Birthday, Yash! 🎂
+    </h1>
+
+    <h2 id="heroName">
+        Yash, you are amazing! ✨
+    </h2>
+
+    <p>
+        Today is your special day.
+        Make a wish, blow out the candle,
+        open your gift and enjoy your surprise! 💖
+    </p>
+
+
+    <!-- CAKE -->
+
+    <div class="cakeArea">
+
+        <div class="cake">
+
+            <div class="cakeBottom"></div>
+
+            <div class="cakeMiddle"></div>
+
+            <div class="frosting"></div>
+
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+            <div class="drip"></div>
+
+            <div class="candle">
+
+                <div class="wick"></div>
+
+                <div
+                    id="flame"
+                    class="flame"
+                ></div>
+
+                <div
+                    id="smoke"
+                    class="smoke"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="controlBox">
+
+        <button
+            class="actionBtn"
+            onclick="startBlowDetection()"
+        >
+            🎤 Blow Candle
+        </button>
+
+        <button
+            class="actionBtn"
+            onclick="blowCandle()"
+        >
+            💨 Blow It Out
+        </button>
+
+        <button
+            class="actionBtn"
+            onclick="toggleMusic()"
+        >
+            🎵 Music
+        </button>
+
+    </div>
+
+    <div id="blowStatus">
+        Make a wish and blow toward your microphone! 🕯️
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     PERSONAL MESSAGE
+===================================== -->
+
+<section class="messageSection">
+
+    <div class="glassCard">
+
+        <h2 class="sectionTitle">
+            💌 A Special Message For Yash
+        </h2>
+
+        <div id="typedMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     GIFT
+===================================== -->
+
+<section class="giftSection">
+
+    <div class="glassCard">
+
+        <h2 class="sectionTitle">
+            🎁 Yash's Birthday Gift
+        </h2>
+
+        <p>
+            Tap the gift box to open your surprise! 💖
+        </p>
+
+        <div
+            id="giftBox"
+            class="giftBox"
+            onclick="openGift()"
+        >
+
+            <div class="giftLid"></div>
+
+            <div class="giftBow"></div>
+
+            <div class="giftBase"></div>
+
+            <div class="giftRibbonVertical"></div>
+
+        </div>
+
+        <div
+            id="giftMessage"
+            class="giftMessage"
+        >
+            ✨ Surprise, Yash! You deserve all the
+            happiness in the world! 💖🎂
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     PHOTOS
+===================================== -->
+
+<section class="photoSection">
+
+    <div class="glassCard">
+
+        <h2 class="sectionTitle">
+            📸 Beautiful Memories Of Yash
+        </h2>
+
+        <p>
+            A little collection of special moments 💕
+        </p>
+
+        <div class="slideshow">
+
+            <!--
+                PUT YOUR PHOTOS IN THE "photos" FOLDER.
+
+                Name them:
+
+                photo1.jpg
+                photo2.jpg
+                photo3.jpg
+                photo4.jpg
+            -->
+
+            <img
+                class="slide active"
+                src="photos/photo1.jpg"
+                alt="Yash birthday memory 1"
+            >
+
+            <img
+                class="slide"
+                src="photos/photo2.jpg"
+                alt="Yash birthday memory 2"
+            >
+
+            <img
+                class="slide"
+                src="photos/photo3.jpg"
+                alt="Yash birthday memory 3"
+            >
+
+            <img
+                class="s
